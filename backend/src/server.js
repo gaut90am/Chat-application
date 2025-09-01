@@ -20,6 +20,7 @@ const allowedOrigins = [
   "https://chat-application-app-pogg.onrender.com" // replace with your deployed frontend URL
 ];
 
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -40,6 +41,12 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/chat", chatRoutes);
+
+
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist", "index.html"));
+});
 
 // if (process.env.NODE_ENV === "production") {
 //   app.use(express.static(path.join(__dirname, "../frontend/dist")));

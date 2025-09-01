@@ -15,10 +15,22 @@ const PORT = process.env.PORT;
 
 const __dirname = path.resolve();
 
+const allowedOrigins = [
+  "http://localhost:5173", // for local development
+  "https://chat-application-mtpc.onrender.com" // replace with your deployed frontend URL
+];
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
-    credentials: true, // allow frontend to send cookies
+    origin: (origin, callback) => {
+      // allow requests with no origin (like Postman) or from allowed origins
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, // allow cookies
   })
 );
 

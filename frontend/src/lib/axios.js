@@ -1,6 +1,8 @@
 import axios from "axios";
 
-export const axiosInstance=axios.create({
-    baseURL:"http//localhost:5001/api",
-    withCredentials:true,//send Cookies with request
+const BASE_URL = "https://chat-application-mtpc.onrender.com";
+
+export const axiosInstance = axios.create({
+  baseURL: BASE_URL,
+  withCredentials: true,
 });

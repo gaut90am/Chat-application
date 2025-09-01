@@ -17,7 +17,7 @@ const __dirname = path.resolve();
 
 const allowedOrigins = [
   "http://localhost:5173", // for local development
-  "https://chat-application-mtpc.onrender.com" // replace with your deployed frontend URL
+  "https://chat-application-app-pogg.onrender.com" // replace with your deployed frontend URL
 ];
 
 app.use(
